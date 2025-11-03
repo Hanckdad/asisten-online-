@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anos AI - Asisten Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="loading-text">Anos AI</div>
+            <div class="loading-subtitle">Memuat asisten AI...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Interface -->
+    <div id="chat-container" class="hidden">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="header-text">
+                    <div class="app-name">Anos AI</div>
+                    <div class="app-status" id="app-status">Online</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="header-btn" id="clear-chat" title="Bersihkan Percakapan">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <button class="header-btn" id="theme-toggle" title="Ubah Tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Chat Messages -->
+        <div class="chat-messages" id="chat-messages">
+            <div class="message ai-message">
+                <div class="avatar ai-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-text">Halo! 👋 Saya Anos AI, asisten virtual Anda. Saya siap membantu menjawab pertanyaan, menjelaskan konsep, atau membantu dengan tugas lainnya. Apa yang bisa saya bantu hari ini?</div>
+                    <div class="message-time" id="initial-time"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Typing Indicator -->
+        <div class="typing-indicator hidden" id="typing-indicator">
+            <div class="avatar ai-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="typing-content">
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+                <div class="typing-text">Anos AI sedang mengetik...</div>
+            </div>
+        </div>
+        
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+                <textarea 
+                    class="chat-input" 
+                    id="chat-input" 
+                    placeholder="Ketik pesan Anda di sini..." 
+                    rows="1"
+                    maxlength="2000"
+                ></textarea>
+                <div class="input-actions">
+                    <span class="char-count" id="char-count">0/2000</span>
+                    <button class="send-button" id="send-button" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="input-footer">
+                <div class="disclaimer">
+                    Anos AI dapat membuat kesalahan. Harap verifikasi informasi penting.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal hidden" id="error-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Terjadi Kesalahan</h3>
+                <button class="modal-close" id="error-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="error-message"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="error-modal-ok">Mengerti</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
